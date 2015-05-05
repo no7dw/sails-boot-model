@@ -8,8 +8,12 @@
 module.exports = {
 	test:function(req, res){
     var bm = require('boot-model');
-    console.log('bm', bm);
-    res.json(200,{});
+    //console.log('bm', bm);
+    bm.count(function(err, length){
+        if(!err) res.json(200, {'length':length});
+        else  res.json(200,{'err':err});
+      });
+
   }
 };
 
